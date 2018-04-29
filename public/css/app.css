@@ -1,0 +1,102 @@
+body{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.buttomApp{
+    border: 0px;
+    background-color: #2d9fc3;
+    border-radius: 4px;
+    padding: 11px;
+    max-width: 109px;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 12px;
+    outline: none;
+}
+
+.buttomApp:disabled{
+    opacity: 0.2;
+}
+
+.buttomApp:enabled:hover{
+    background-color: #678088;
+}
+
+.alert{
+    position: absolute;
+    height: 100px;
+    background-color: #8BC34A;
+    left: calc(50% - 44px);
+    width: 281px;
+    z-index: 9999999999;
+    border-radius: 5px;
+    box-shadow: 2px 2px 26px #000000
+}
+
+.boxClient{
+    left: calc(50% - 52px);
+    background-color: #2d9fc3;
+    height: 350px;
+    position: absolute;
+    width: 320px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 18px #000000;
+}
+
+.loadingText{
+    width: 119px;
+    margin-left: -29px;
+    margin-top: 11px;
+    color: #2d9fc3;
+    font-size: 13px;
+    font-weight: 800;   
+}
+
+
+.gridButtom{
+    border: 0px;
+    background-color: #263f57;
+    color: #2d9fc3;
+    font-size: 23px;
+    margin-right: 14px;
+    outline: none;
+}
+
+.gridButtom:hover{
+    color: #678088;
+}
+
+input{
+    border-radius: 3px;
+    border: 1px solid #263f57;
+    height: 32px;
+    padding-left: 9px;
+    padding-right: 9px;
+    color: #263f57;
+    font-weight: 500;
+}
+
+.labelForm{
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.menuButtom{
+    margin: 5px;
+    padding: 20px;
+    background-color: #263f57;
+    border-radius: 5px;
+    box-shadow: 2px 1px 2px #000000;
+    border: 0;
+    color: #FFFFFF;
+    margin-right: 14px !important;
+    margin-left: 14px !important; 
+    outline: none;
+}
+
+.menuButtom:hover{
+    background-color: #636d77;
+}

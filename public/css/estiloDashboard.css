@@ -1,0 +1,146 @@
+@media screen and (max-width: 654px) {
+    .resumoPeriodo{
+        flex-direction: column !important;
+        max-width: 166px !important;
+        height: 121px !important;
+        margin: 0px auto;
+        margin-top: 10px;
+        margin-right: auto !important;
+        justify-content: center !important;
+    }
+    
+    .divisorGraficoNoPeriodo{
+        flex-direction: column-reverse !important;
+        min-height: inherit !important;
+        height: inherit !important;        
+        padding-top: 10px;        
+        justify-content: center !important;
+    }
+    
+    .localGrafAtendentes{
+        margin-top: 5px !important;
+        margin-left: 0px !important;
+    }
+
+    .divGrafSegundaLinha{
+        flex-direction: column !important;      
+        justify-content: center !important;  
+    }
+
+    .divGrafEvolucaoMensal {
+        flex-direction: column-reverse !important;
+        min-height: inherit !important;
+        height: inherit !important;
+        justify-content: center !important;
+    }
+
+    .resumoGraficoAno{
+        margin: 0px auto !important;
+        padding: inherit !important;
+    }
+
+    .labelAtendentesGrafico{
+        width: initial !important;
+        font-size: 11px !important;
+    }
+
+    .cmpResumoClienteGrafico{
+        margin: 0px auto !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding: inherit !important;
+    }
+
+    .labelItemClienteGrafico{
+        display: none !important;
+    }
+
+    .divisorResumoClienteGrafico{
+        flex-direction: column !important;
+        justify-content: center !important;
+
+        margin-top:  inherit !important;
+        margin-bottom:  inherit !important;     
+    }
+
+    .caixaIndiceAtendenteGrafico{
+        min-width: 38px !important;
+        width: 38px !important;
+    }
+
+    .centralizaRow{
+        justify-content: center !important;
+    }
+
+    .icoGrafico{
+        max-width: 48px !important;
+        width: 48px !important;
+        padding-top: 0px !important;
+        margin-bottom: 7px !important;
+    }
+
+    .divisorGraficoAtendente{
+        display: none !important;
+    }
+
+    .divGraf{
+        flex-direction: column !important;     
+        min-height: inherit !important;
+        height: inherit !important;
+        justify-content: center !important;
+        max-height:  inherit !important;
+    }       
+}   
+
+@media screen and (max-width: 1000px) {
+    .divisorResumoClienteGrafico{
+        justify-content: center !important;
+        margin-top: -27px;
+        margin-bottom: -17px;        
+    }
+
+    .divGrafClientes{
+        flex-direction: column !important;     
+        min-height: inherit !important;
+        height: inherit !important;
+        justify-content: center !important;
+        max-height:  inherit !important;
+    }
+
+    .grafClientes{
+        height: inherit !important;   
+    }
+}
+
+@media screen and (max-width: 860px) {
+    
+    .localListaAtentendentes{
+        margin-left: 10px !important;
+    }
+
+    .divGrafAtendentes{
+        flex-direction: column !important;     
+        min-height: inherit !important;
+        height: inherit !important;
+        justify-content: center !important;
+        max-height:  inherit !important;
+    }    
+
+    .icoGraficoAtendentente{
+        max-width: 48px !important;
+        width: 48px !important;
+        padding-top: 0px !important;
+        margin-bottom: 7px !important;
+    }    
+
+    .resumoAtendentePeriodo{
+        flex-direction: column !important;
+        max-width: 166px !important;
+        height: 121px !important;
+        margin: 0px auto;
+        margin-top: 10px;
+        margin-right: auto !important;
+        justify-content: center !important;
+    }    
+
+}

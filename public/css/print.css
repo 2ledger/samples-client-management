@@ -1,0 +1,46 @@
+@media only print {
+    
+    .botaoOpPag, .orderHeader, .caixaGrafResumo, .btImprimir, .headerTela, .icoFoto, .botaoFiltro, .fa-caret-down, .fa-calendar {
+        display: none !important;
+    }
+
+    .headerDataPagamento {
+        margin-top: -5px;
+    }
+ 
+    .gridLista{
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .rodapeListaPag {
+        position: inherit !important;
+        margin-left: -50px !important;
+        margin-right: -50px !important;
+        margin-top: 25px !important;
+        width: 100vw !important;
+    }
+
+    .appDoutorJaFinanceiro{
+        overflow: visible !important;
+    }
+
+    .localValorTotal {
+        margin-right: -50px !important;
+    }
+
+    .cmpPeriodoAdmPagamento {
+        border: 0px !important;
+        box-shadow: 0px 0px !important;
+        text-align: left !important;
+        margin-left: -10px;
+    }
+
+    .totalResumo {
+        font-size: 16px;
+    }
+
+    .caixaTitulosGraf {
+        border-bottom: 1px solid #000000 !important;
+    }
+}

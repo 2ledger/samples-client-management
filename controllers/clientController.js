@@ -1,0 +1,258 @@
+'use strict';
+
+var logger = require('../lib/logger.js');
+var Promise = require('promise');
+var https = require('https');
+var variavel = require(pathRootApp + '/var.properties.js');
+var querystring = require('querystring');
+
+
+module.exports = function (app) {
+	///////////////////////////////////////////////////////////////////////
+	// ChamadaGET
+	// Método para chamadas GET
+	///////////////////////////////////////////////////////////////////////
+	function chamadaGET(path) {
+		return new Promise((resolve, reject) => {
+			var auth = variavel.API_2LEDGER_TOKEN;
+
+			const options = {
+				hostname: variavel.API_2LEDGER,
+				method: 'GET',
+				path: '/2ledger/api' + path,
+				headers: {
+					'Content-Type': 'application/json',
+					'X-JWT-Assertion': auth
+				}
+			};
+
+			const req = https.request(options, (response) => {
+				response.setEncoding('utf8');
+				var body = '';
+
+				response.on('data', (retorno) => {
+					body += retorno;
+				});
+
+				response.on('end', function () {
+					resolve(body);
+				});
+			});
+			req.on('error', (e) => {
+				logger.info(`problem with request: ${e.message}`);
+			});
+			req.end();
+		});
+	}
+
+	///////////////////////////////////////////////////////////////////////
+	// ChamadaDELETE
+	// Método para chamadas DELETE
+	///////////////////////////////////////////////////////////////////////
+	function chamadaDELETE(path) {
+		return new Promise((resolve, reject) => {
+			var auth = variavel.API_2LEDGER_TOKEN;
+
+			const options = {
+				hostname: variavel.API_2LEDGER,
+				method: 'DELETE',
+				path: '/2ledger/api' + path,
+				headers: {
+					'Content-Type': 'application/json',
+					'X-JWT-Assertion': auth
+				}
+			};
+
+			const req = https.request(options, (response) => {
+				response.setEncoding('utf8');
+				var body = '';
+
+				response.on('data', (retorno) => {
+					body += retorno;
+				});
+
+				response.on('end', function () {
+					resolve(body);
+				});
+			});
+			req.on('error', (e) => {
+				logger.info(`problem with request: ${e.message}`);
+			});
+			req.end();
+		});
+	}
+
+	///////////////////////////////////////////////////////////////////////
+	// ChamadaPOST
+	// Método para chamadas POST
+	///////////////////////////////////////////////////////////////////////
+	function chamadaPOST(path, data) {
+		return new Promise((resolve, reject) => {
+			var auth = variavel.API_2LEDGER_TOKEN;
+
+			const options = {
+				hostname: variavel.API_2LEDGER,
+				method: 'POST',
+				path: '/2ledger/api' + path,
+				headers: {
+					'Content-Type': 'application/json',
+					'X-JWT-Assertion': auth
+				}
+			};
+
+			const req = https.request(options, (response) => {
+				var body = '';
+
+				response.setEncoding('utf8');
+				response.on('data', (retorno) => {
+					body += retorno;
+				});
+
+				response.on('end', function () {
+					resolve(body);
+				});
+			});
+			req.on('error', (e) => {
+				logger.info(`problem with request: ${e.message}`);
+			});
+			req.write(JSON.stringify(data));
+			req.end();
+		});
+	}
+
+	var clientController = {
+
+		///////////////////////////////////////////////////////////////////////
+		// buscarConfiguracoes
+		// Método para retornar as configurações do aplicativo
+		///////////////////////////////////////////////////////////////////////
+		getToken: function (req, res) {
+
+			const options = {
+				hostname: variavel.API_2LEDGER,
+				method: 'POST',
+				path: '/2ledger/api/login',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			};
+
+			const req2 = https.request(options, (response) => {
+				response.setEncoding('utf8');
+				var body = '';
+
+				response.on('data', (retorno) => {
+					body += retorno;
+				});
+
+				response.on('end', function () {
+					variavel.API_2LEDGER_TOKEN = JSON.parse(body).response;
+
+					res.send({'sucess':'true'});
+				});
+			});
+			req2.on('error', (e) => {
+				logger.info(`problem with request: ${e.message}`);
+			});
+			req2.write(JSON.stringify({ email: 'adm_UserManager@gmail.com', password: '123456' }));
+			req2.end();
+		},
+
+
+		///////////////////////////////////////////////////////////////////////
+		// getAll
+		// Metod
+		///////////////////////////////////////////////////////////////////////
+		getAllClients: function (req, res) {
+			chamadaGET('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
+				var list = JSON.parse(d).response;
+				var obj = {};
+				var result = [];
+
+				for(var k = 0 ; k < list.length; k++){
+					if(!obj[list[k].key]){
+						obj[list[k].key] = {};
+						obj[list[k].key].versions = [];
+						obj[list[k].key].versions.push(list[k]);
+					}
+					else{
+						obj[list[k].key].versions.push(list[k]);
+					}
+				}
+
+				for (var key in obj) {
+					var versao = obj[key].versions[obj[key].versions.length - 1];
+					if(versao.value.status != 'inactive')
+						result.push(versao)
+				}
+
+				res.send(result);
+			})
+		},
+
+		///////////////////////////////////////////////////////////////////////
+		// saveClient
+		// Metod
+		///////////////////////////////////////////////////////////////////////
+		saveClient: function (req, res) {
+			var value = req.body.data;
+			value.status = 'active';
+
+			var obj = {key:req.body.id, value:value};
+			chamadaPOST('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
+				res.send(JSON.parse(d).response);
+			})
+		},
+
+		///////////////////////////////////////////////////////////////////////
+		// deleteClient
+		// Metod
+		///////////////////////////////////////////////////////////////////////
+		deleteClient: function (req, res) {
+			var value = req.body.data;
+			value.status = 'inactive';
+
+			var obj = {key:req.body.id, value:value};
+			chamadaPOST('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
+				res.send(JSON.parse(d).response);
+			})
+		},		
+
+		///////////////////////////////////////////////////////////////////////
+		// deleteClient
+		// Metod
+		///////////////////////////////////////////////////////////////////////
+		searchClient: function (req, res) {
+			var param = req.params.client;
+
+			chamadaGET('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
+				var list = JSON.parse(d).response;
+				var obj = {};
+				var result = [];
+
+				for(var k = 0 ; k < list.length; k++){
+					if(!obj[list[k].key]){
+						obj[list[k].key] = {};
+						obj[list[k].key].versions = [];
+						obj[list[k].key].versions.push(list[k]);
+					}
+					else{
+						obj[list[k].key].versions.push(list[k]);
+					}
+				}
+
+				for (var key in obj) {
+					var versao = obj[key].versions[obj[key].versions.length - 1];
+					if(versao.value.status != 'inactive' && (versao.value.nameClient.indexOf(param) >= 0 || versao.value.emailClient.indexOf(param) >= 0 || versao.value.addressClient.indexOf(param) >= 0))
+						result.push(versao)
+				}
+
+				res.send(result);
+			})
+		},		
+		
+	}
+
+	return clientController;
+}
+

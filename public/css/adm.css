@@ -1,0 +1,76 @@
+.botaoExcluirAdm{
+    border: 0;
+    background-color: rgba(156, 41, 9, 0.54);
+    color: #FFFFFF;
+    width: 23px;
+    height: 23px;
+    padding: 0px;
+    border-radius: 23px;
+    margin-right: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.fundoHeader{
+    background-color: rgb(134, 165, 103);
+    border-bottom: 2px solid rgba(81, 111, 51, 0.5);
+    padding: 8px;
+    color: #5c7346;
+    font-weight: bold;
+}
+
+.botaoGravar{
+    background-color: #cac14a;
+    padding: 10px;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #716d33;    
+}
+
+.botaoGravar:hover{
+    color: #e2e2e2;
+    background-color: #ada86a;
+}
+
+.botaoAdicionar{
+    background-color: #7b9561;
+    border: 0px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 12px;
+    color: #3f542a;
+    margin-top: 1px;
+}
+
+.botaoAdicionar:hover{
+    background-color: #567734;
+    color: #b3c5a1;
+}
+
+.botaoExcluirAdm:hover{
+    background-color: rgba(156, 41, 9, 1);
+}
+
+.botaoSelecionarAdm{
+    border: 0;
+    background-color: rgba(42, 75, 144, 0.39);
+    color: #FFFFFF;
+    width: 23px;
+    height: 23px;
+    padding: 0px;
+    border-radius: 23px;
+    margin-right: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.botaoSelecionarAdm:hover{
+     background-color: rgba(42, 75, 144, 1);
+}

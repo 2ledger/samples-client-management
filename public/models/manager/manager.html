@@ -1,0 +1,169 @@
+<div ng-controller="manager as cx" layout="column" class="container-fluid screenManager">
+
+    <div layout="row" class="alert">
+        <div layout="row" style="    width: 50px;height: 39px;border-radius: 50px;position: relative;color: #FFFFFF;    padding-top: 6px; padding-left: 3px;">
+            <i class="fa fa-check" aria-hidden="true" style="font-size: 49px;width: 50px;"></i>
+            <div flex style="    min-width: 184px;    font-weight: 700;    font-size: 13px;    margin-top: 18px;    margin-left: 10px; margin-right: 10px;">{{cx.responseText}}</div>
+        </div>
+    </div>
+
+    <div flex layout="row" style="    text-align: left;margin-left: 10px;font-size: 22px;font-weight: 700;color: #ffffff;margin-bottom: 10px;margin-bottom: 10px;border-bottom: 1px solid #ffffff1a;padding-bottom: 13px;">
+        <i class="fa fa-users" aria-hidden="true" style="font-size: 37px;"></i>
+        <div style="margin-left: 16px;margin-top: 3px;" ng-show="cx.clients.length == 0">Clients</div>
+        <div style="margin-left: 16px;margin-top: 3px;" ng-show="cx.clients.length > 0" ng-if="cx.showWaiting == false">Clients ({{cx.clients.length}})</div>
+    </div>
+
+    <div flex ng-show="cx.showWaiting == true" layout="row" style="text-align: center;    height: calc(100vh - 160px);background-color: rgb(38, 63, 87);left: 200px;width: 100%;z-index: 99999;">
+        <div style="    width: 50px;height: 39px;border-radius: 50px;transform: translate(-50%,-50%);top: 50%;left: 50%;position: relative;">
+            <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true" style="color: #2d9fc3;font-size: 49px;"></i>
+            <div class="loadingText" style="opacity: 0; margin-top:0px;">{{cx.loadingText}}</div>
+        </div>
+    </div>
+
+    <div flex ng-show="cx.showConfirmation == true" layout="row" style="text-align: center;    height: calc(100vh - 163px);background-color: rgb(38, 63, 87);left: 200px;width: 100%;z-index: 99999;">
+        <div style="border-radius: 50px;transform: translate(-50%,-50%);top: 50%;left: 50%;position: relative;max-height: 225px;">
+            <div layout="column">
+                <i class="fa fa-question-circle" aria-hidden="true" style="color: #2d9fc3;font-size: 132px;"></i>
+                <div class="loadingText" style="opacity: 0;     margin-top: 5px; margin-left: 0px; font-size: 18px; width: auto;">{{cx.textConfirmation}}</div>
+            </div>
+            <div layout="row" style="margin-top: 18px;justify-content: center;">
+                <button ng-click="cx.confirmConfirmation()" class="buttomApp" style="    width: 100px;margin-right: 10px;" title="Click to save">Yes</button>
+                <button ng-click="cx.cancelConfirmation()" class="buttomApp" title="Click to cancel" style="    width: 100px;">No</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="margin: 10px;" ng-show="cx.showWaiting == false" ng-if="cx.showConfirmation == false ">
+        <div class="listPlace" layout="column" ng-show="cx.showEdit == false">
+            <div flex layout="row" style="padding-bottom: 10px;">
+                <div flex></div>
+                <i class="fa fa-search" aria-hidden="true" style="    color: #FFFFFF;    margin-right: 8px;font-size: 15px;margin-top: 7px;"></i>
+                <div style="    color: #FFFFFF;margin-right: 10px;margin-top: 6px;font-size: 13px;font-weight: 600;">Search:</div>
+                <input ng-model="cx.fieldQuery" style="margin-right: 7px;font-size: 13px;font-weight: 400;" placeholder="Enter text to search">
+                <button class="buttomApp" style="height: 32px; padding-top: 8px;" ng-click="cx.searchClient()">Go</button>
+            </div>
+
+            <div layout="column">
+
+                <div flex layout="row" style="    padding-top: 10px;    border-bottom: 5px solid #f8fdff;padding-bottom: 6px;margin-bottom: 10px;">
+                    <div flex style="padding-top: 5px;text-align: left;margin-left: 10px;font-size: 14px;font-weight: 700;color: #ffffff;">
+                        Full Name
+                    </div>
+                    <div flex style="padding-top: 5px;text-align: left;margin-left: 10px;border-left: 1px solid #d8d8d8;padding-left: 10px;font-size: 14px;font-weight: 700;color: #ffffff;">
+                        E-mail
+                    </div>
+                    <div flex style="padding-top: 5px;text-align: left;margin-left: 10px;border-left: 1px solid #d8d8d8;padding-left: 10px;font-size: 14px;font-weight: 700;color: #ffffff;">
+                        Address
+                    </div>
+                    <button ng-disabled="true" class="gridButtom" style="opacity:0">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button ng-disabled="true" class="gridButtom" style="opacity:0">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div style="height: calc(100vh - 340px); overflow-y: auto;" ng-show="cx.clients.length > 0">
+                    <div ng-repeat="itm in cx.clients" style="margin-bottom: 12px;border-bottom: 1px solid #ffffffa1;padding-bottom: 10px;" layout="column">
+                        <div flex layout="row">
+                            <i ng-show="itm.value.photoClient == ''" class="fa fa-user-circle" aria-hidden="true" style="color: #FFFFFF;font-size: 31px;margin-left: 7px;"></i>
+                            <img ng-show="itm.value.photoClient != ''" class="bordaFotoUsuario" style="border: 2px solid #FFFFFF;height: 31px;border-radius: 31px;width: 31px;max-width: 31px;max-height: 31px;margin-left: 7px;"
+                                ng-src="{{itm.value.photoClient}}" />
+
+                            <div flex style="    padding-top: 6px;margin-right: -40px;text-align: left;margin-left: 13px;font-size: 13px;font-weight: 600;color: #ffffff;">
+                                {{itm.value.nameClient}}
+                            </div>
+                            <div flex style="    padding-top: 6px;text-align: left;margin-left: 10px;border-left: 1px solid #d8d8d8;padding-left: 10px;font-size: 13px;font-weight: 600;color: #ffffff;">
+                                {{itm.value.emailClient}}
+                            </div>
+                            <div flex style="    padding-top: 6px;text-align: left;margin-left: 10px;border-left: 1px solid #d8d8d8;padding-left: 10px;font-size: 13px;font-weight: 600;color: #ffffff;">
+                                {{itm.value.addressClient}}
+                            </div>
+                            <button ng-click="cx.editClient(itm)" class="gridButtom" data-toggle="tooltip" data-placement="left" title="Click to edit">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button ng-click="cx.deleteClient(itm)" class="gridButtom" data-toggle="tooltip" data-placement="left" title="Click to remove">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <script>
+                            $(document).ready(function () { $('[data-toggle="tooltip"]').tooltip() });
+                        </script>
+                    </div>
+                </div>
+                <div ng-show="cx.clients.length == 0" style="height: calc(100vh - 355px);">
+                    <div flex style="height: 39px;border-radius: 50px;transform: translate(-50%,-50%);top: 50%;left: 50%;position: relative;    text-align: center;color: #FFFFFF;font-weight: 700;font-size: 28px;">
+                            No registered clients 
+                            <div flex layout-align="center" layout="row" style="    margin-top: 20px;">
+                                    <button ng-click="cx.addClient()" class="buttomApp" data-toggle="tooltip" data-placement="left" title="Click to add new client"
+                                        style="width: 100px;">New client</button>
+                                </div>                            
+                    </div>
+                </div>
+            </div>
+            <div ng-show="cx.clients.length > 0" flex layout-align="end" layout="row" style="    margin-top: 10px;">
+                <button ng-click="cx.addClient()" class="buttomApp" data-toggle="tooltip" data-placement="left" title="Click to add new client"
+                    style="width: 100px;">New client</button>
+            </div>
+
+        </div>
+
+
+
+        <div class="editPlace" layout="row" ng-show="cx.showEdit == true" style="margin-top: 36px;justify-content: center;">
+            <div style="    padding-left: 18px;max-width: 181px;border-right: 1px solid #ffffff1f;margin-right: 15px;">
+                <div class="labelForm" style="    padding-left: 13px;">Photo</div>
+                <div ng-show="cx.photoClient != ''" style="margin-left: 7px;border-radius: 136px;height: 136px;width: 136px;max-width: 136px;max-height: 136px;opacity: 0.8;    cursor: pointer;    text-shadow: none;    color: #585858;    padding-top: 7px;    margin-right: 45px;margin-top: 30px"
+                    class="caixaLetraInfo caixaLetra">
+                    <img class="bordaFotoUsuario" style="border: 2px solid #FFFFFF;height: 136px;border-radius: 136px;width: 136px;max-width: 136px;max-height: 136px;margin-top: -9px;"
+                        ng-src="{{cx.photoClient}}" />
+                </div>
+                <div class="fileupload" style="display:none">
+                    <input class="cmpUploadImage" type="file" />
+                </div>
+
+                <i ng-show="cx.photoClient == ''" class="fa fa-user-circle" aria-hidden="true" style="    color: #FFFFFF;font-size: 136px;margin-left: 7px;margin-top: 16px;margin-right: 38px;"></i>
+                <!--<div style="text-align: center;color: #FFFFFF;margin-left: -26px;margin-top: 12px;font-weight: 700;font-size: 21px;">{{cx.textForm}}</div>-->
+                <button class="buttomApp" ng-click="cx.onMouseDownImage()" style="    max-width: max-content;margin-left: 16px;margin-top: 18px;">
+                    <i style="margin-right: 4px;font-weight: 100;" class="fa fa-camera" aria-hidden="true"></i>
+                    Select photo</button>
+            </div>
+
+
+            <div class="localFields">
+                <div layout="row" class="labelForm" style="    margin-bottom: -8px;">E-mail
+                    <i ng-show="cx.editMode==false" style='margin-left: 5px;font-size: 9px;color: #2d9fc3;margin-top: 5px;'
+                        class="fa fa-asterisk icoRequired"></i>
+                    <div style="width: calc(100% - 52px);text-align: right;font-weight: 600;color: #d41f1f;" class="invalidMail">Invalid e-mail</div>
+                </div>
+                <input ng-model="cx.emailClient" ng-blur="cx.validateMail()" style="width: 359px;margin-top: 17px;" ng-show="cx.editMode==false"
+                    class="inputEmailClient">
+                <div class="labelForm" ng-show="cx.editMode==true" style="height: 38px;color: #2d9fc3;font-size: 23px;">{{cx.emailClient}}</div>
+                <div class="labelForm">Full Name
+                    <i style='margin-left: 5px;font-size: 9px;color: #2d9fc3;' class="fa fa-asterisk icoRequired"></i>
+                </div>
+                <input ng-model="cx.nameClient" style="width: 359px;">
+                <div class="labelForm">Address</div>
+                <input ng-model="cx.addressClient" style="width: 359px;">
+                <div class="labelForm">Password
+                    <i style='margin-left: 5px;font-size: 9px;color: #2d9fc3;' class="fa fa-asterisk icoRequired"></i>
+                </div>
+                <input ng-model="cx.passwordClient" style="width: 150px;" type="password">
+                <div class="labelInput" style='    font-size: 11px;color: #2d9fc3;text-align: left;font-weight: 700;margin-top: 14px;margin-left: -5px;'>
+                    <i style='margin-left: 5px;font-size: 11px;color: #2d9fc3;' class="fa fa-asterisk icoObrigatorio"></i> Fields required
+                </div>
+
+                <div layout="row" style="margin-top: 18px;">
+                    <button ng-disabled="cx.verifyFields()" ng-click="cx.saveClient()" class="buttomApp" style="    margin-right: 10px;width: 100px;"
+                        title="Click to save">Save client</button>
+                    <button ng-click="cx.cancelClient()" class="buttomApp" title="Click to cancel" style="width: 100px;">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () { $('[data-toggle="tooltip"]').tooltip() });
+    </script>
+</div>
