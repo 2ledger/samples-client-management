@@ -38,7 +38,8 @@ appT.controller('clientController', function ($scope, $http, $timeout, $rootScop
 		})		
 	}
 
-	
+	$location.path("/manager");
+	$scope.$broadcast('showScreen');
 });
 
 appT.run(function ($rootScope) {
