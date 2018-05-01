@@ -4,6 +4,10 @@ This project aims to demonstrate the operation of a simple customer registry usi
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+## Disclaimer
+
+These sources are for purely educational purposes. It is not recommended to use the API directly through your system page or  storage of unencrypted passwords in the distributed ledger.
+
 ## Before You Begin
 
 Before you begin we recommend you read about the basic building blocks that assemble this sample application:
@@ -38,8 +42,6 @@ npm install
 ```bash
 npm start
 ```
-
-#### Downloading the project
 
 ## License
 
