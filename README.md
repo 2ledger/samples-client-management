@@ -12,7 +12,7 @@ These sources are for purely educational purposes. It is not recommended to use 
 
 The 2Ledger platform is the simplest and cheapest way to bring security and confidence to your business. Through its RESTful API, its users can immediately benefit from the advantages of blockchain technology without having to know the technology.
 
-Creating a free user in moments you can create your assets and immutable entities. In minutes you can integrate your system with the 2Ledger blockchain network. Learn more at [2Ledger Platform](http://www.2ledger.com/) 
+Creating a free user in moments you can create your assets and immutable entities. In minutes you can integrate your system with the 2Ledger blockchain network. Learn more at [2Ledger Platform](http://www.2ledger.com/). 
 
 ## Before You Begin
 
