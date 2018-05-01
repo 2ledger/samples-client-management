@@ -1,6 +1,6 @@
 # Sample Client Management Project
 
-This project aims to demonstrate the operation of a simple customer registry using the 2Ledger blockchain platform API.
+This project aims to demonstrate the operation of a simple customer registry using the [2Ledger](http://www.2ledger.com/) blockchain platform API.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -17,8 +17,31 @@ Make sure you have installed all of the following prerequisites on your developm
 * Git - [Download & Install Git](https://git-scm.com/downloads). OSX and Linux machines typically have this already installed.
 * Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 
+### Installing
+
+To install this project is very simple. Just clone the project, download your libraries and run.
+
+#### Cloning the project
+
+```bash
+git clone https://github.com/2ledger/samples-client-management.git
+```
+
+#### Downloading the libraries
+
+```bash
+npm install
+```
+
+#### Run the project
+
+```bash
+npm start
+```
+
+#### Downloading the project
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
+This project is licensed under the MIT License.
 
