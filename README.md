@@ -8,6 +8,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 These sources are for purely educational purposes. It is not recommended to use the API directly through your system page or  storage of unencrypted passwords in the distributed ledger.
 
+## [2Ledger Platform](http://www.2ledger.com/) 
+
+The 2Ledger platform is the simplest and cheapest way to bring security and confidence to your business. Through its RESTful API, its users can immediately benefit from the advantages of blockchain technology without having to know the technology.
+
+Creating a free user in moments you can create your assets and immutable entities. In minutes you can integrate your system with the 2Ledger blockchain network. Learn more at [2Ledger Platform](http://www.2ledger.com/) 
+
 ## Before You Begin
 
 Before you begin we recommend you read about the basic building blocks that assemble this sample application:
