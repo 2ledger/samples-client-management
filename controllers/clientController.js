@@ -1,9 +1,7 @@
 'use strict';
 
-var logger = require('../lib/logger.js');
 var Promise = require('promise');
 var https = require('https');
-var variavel = require(pathRootApp + '/var.properties.js');
 var querystring = require('querystring');
 
 
@@ -14,10 +12,10 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaGET(path) {
 		return new Promise((resolve, reject) => {
-			var auth = variavel.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
 				path: '/2ledger/api' + path,
 				headers: {
@@ -51,10 +49,10 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaDELETE(path) {
 		return new Promise((resolve, reject) => {
-			var auth = variavel.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'DELETE',
 				path: '/2ledger/api' + path,
 				headers: {
@@ -76,7 +74,7 @@ module.exports = function (app) {
 				});
 			});
 			req.on('error', (e) => {
-				logger.info(`problem with request: ${e.message}`);
+				console.info(`problem with request: ${e.message}`);
 			});
 			req.end();
 		});
@@ -88,10 +86,10 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaPOST(path, data) {
 		return new Promise((resolve, reject) => {
-			var auth = variavel.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
 				path: '/2ledger/api' + path,
 				headers: {
@@ -113,7 +111,7 @@ module.exports = function (app) {
 				});
 			});
 			req.on('error', (e) => {
-				logger.info(`problem with request: ${e.message}`);
+				console.info(`problem with request: ${e.message}`);
 			});
 			req.write(JSON.stringify(data));
 			req.end();
@@ -129,7 +127,7 @@ module.exports = function (app) {
 		getToken: function (req, res) {
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
 				path: '/2ledger/api/login',
 				headers: {
@@ -146,7 +144,7 @@ module.exports = function (app) {
 				});
 
 				response.on('end', function () {
-					variavel.API_2LEDGER_TOKEN = JSON.parse(body).response;
+					global.cfg.API_2LEDGER_TOKEN = JSON.parse(body).response;
 
 					res.send({'sucess':'true'});
 				});
@@ -164,7 +162,7 @@ module.exports = function (app) {
 		// Metod
 		///////////////////////////////////////////////////////////////////////
 		getAllClients: function (req, res) {
-			chamadaGET('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
+			chamadaGET('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
 				var list = JSON.parse(d).response;
 				var obj = {};
 				var result = [];
@@ -199,7 +197,7 @@ module.exports = function (app) {
 			value.status = 'active';
 
 			var obj = {key:req.body.id, value:value};
-			chamadaPOST('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
+			chamadaPOST('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
 				res.send(JSON.parse(d).response);
 			})
 		},
@@ -213,7 +211,7 @@ module.exports = function (app) {
 			value.status = 'inactive';
 
 			var obj = {key:req.body.id, value:value};
-			chamadaPOST('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
+			chamadaPOST('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
 				res.send(JSON.parse(d).response);
 			})
 		},		
@@ -225,7 +223,7 @@ module.exports = function (app) {
 		searchClient: function (req, res) {
 			var param = req.params.client;
 
-			chamadaGET('/entities/' + variavel.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
+			chamadaGET('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
 				var list = JSON.parse(d).response;
 				var obj = {};
 				var result = [];

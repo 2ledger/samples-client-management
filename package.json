@@ -21,10 +21,8 @@
     "express-session": "^1.12.1",
     "method-override": "^2.3.5",
     "promise": "^7.1.1",
-    "properties-reader": "0.0.15",
     "raw-body": "^2.3.2",
-    "serve-index": "latest",
-    "winston": "^1.0.1"
+    "serve-index": "latest"
   },
   "devDependencies": {}
 }

@@ -1,9 +1,7 @@
 'use strict';
 
-var logger = require('../lib/logger.js');
 var Promise = require('promise');
 var https = require('https');
-var variavel = require(pathRootApp + '/var.properties.js');
 var querystring = require('querystring');
 
 
@@ -14,10 +12,10 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaGET(path) {
 		return new Promise((resolve, reject) => {
-			var auth = variavel.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
 				path: '/2ledger/api' + path,
 				headers: {
@@ -51,10 +49,10 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaDELETE(path) {
 		return new Promise((resolve, reject) => {
-			var auth = variavel.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'DELETE',
 				path: '/2ledger/api' + path,
 				headers: {
@@ -88,10 +86,10 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaPOST(path, data) {
 		return new Promise((resolve, reject) => {
-			var auth = variavel.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
 				path: '/2ledger/api' + path,
 				headers: {
@@ -129,7 +127,7 @@ module.exports = function (app) {
 		getToken: function (req, res) {
 
 			const options = {
-				hostname: variavel.API_2LEDGER,
+				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
 				path: '/2ledger/api/login',
 				headers: {
@@ -146,7 +144,7 @@ module.exports = function (app) {
 				});
 
 				response.on('end', function () {
-					variavel.API_2LEDGER_TOKEN = JSON.parse(body).response;
+					global.cfg.API_2LEDGER_TOKEN = JSON.parse(body).response;
 
 					res.send({ 'sucess': 'true' });
 				});

@@ -14,13 +14,13 @@ var express = require('express'),
 
 var path = require('path');
 global.pathRootApp = path.resolve(__dirname);
-global.varsAmbiente = require(pathRootApp + '/var.properties.js');
 
 app.use(methodOverride());
 app.use(bodyParser.json({limit:1024102420, type:'application/json'}));
 app.use(bodyParser.text());
 
 global.env = cfg.env;
+global.cfg = cfg;
 
 load('models')
     .then('controllers')
@@ -34,12 +34,12 @@ app.use(cookieParser());
 
 app.use('/', express.static(__dirname + '/public/', { 'index': 'index.html' }));
  
-app.listen(cfg.httpPort, cfg.httpsHost, function () {
+app.listen(cfg.port, cfg.host, function () {
     console.info("########################################################################");
     console.info("##              POWER        SERVER STARTED              POWER        ##");
     console.info("########################################################################");
     console.info('Enviroment: ', cfg.env);
-    console.info('URL: ', cfg.httpHost + ":" + cfg.httpPort);
+    console.info('URL: ', cfg.host + ":" + cfg.port);
     console.info("------------------------------------------------------------------------");
 });
 
