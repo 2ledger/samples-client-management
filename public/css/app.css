@@ -41,6 +41,7 @@ body{
     width: 320px;
     border-radius: 5px;
     box-shadow: 2px 2px 18px #000000;
+    z-index: 9999999999999;
 }
 
 .loadingText{
