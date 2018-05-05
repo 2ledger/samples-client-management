@@ -15,7 +15,7 @@ appT.controller('clientController', function ($scope, $http, $timeout, $rootScop
 			
 			setTimeout(function (){
 				$('.mainForm').animate({'margin-left':'232px'}, 100, function (){
-					$location.path("/login");
+					$location.path("login");
 					$scope.$apply();
 					$scope.$broadcast('showScreen');
 				});
@@ -30,7 +30,7 @@ appT.controller('clientController', function ($scope, $http, $timeout, $rootScop
 
 			setTimeout(function (){
 				$('.mainForm').animate({'margin-left':'232px'}, 100, function (){
-					$location.path("/manager");
+					$location.path("manager");
 					$scope.$apply();
 					$scope.$broadcast('showScreen');
 				});
@@ -38,7 +38,7 @@ appT.controller('clientController', function ($scope, $http, $timeout, $rootScop
 		})		
 	}
 
-	$location.path("/manager");
+	$location.path("manager");
 	$scope.$broadcast('showScreen');
 });
 
@@ -50,9 +50,9 @@ appT.run(function ($rootScope) {
 appT.config(function ($routeProvider) {
 	$routeProvider
 		.when("/login", {
-			templateUrl: "/models/login/login.html",
+			templateUrl: "models/login/login.html",
 		})
-		.when("/manager", {
-			templateUrl: "/models/manager/manager.html",
+		.when("manager", {
+			templateUrl: "models/manager/manager.html",
 		})
 });

@@ -17,7 +17,7 @@ module.exports = function (app) {
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
-				path: '/2ledger/api' + path,
+				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
 					'X-JWT-Assertion': auth
@@ -54,7 +54,7 @@ module.exports = function (app) {
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'DELETE',
-				path: '/2ledger/api' + path,
+				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
 					'X-JWT-Assertion': auth
@@ -91,7 +91,7 @@ module.exports = function (app) {
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
-				path: '/2ledger/api' + path,
+				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
 					'X-JWT-Assertion': auth
@@ -129,7 +129,7 @@ module.exports = function (app) {
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
-				path: '/2ledger/api/login',
+				path: '/v1/login',
 				headers: {
 					'Content-Type': 'application/json'
 				}
