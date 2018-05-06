@@ -37,7 +37,7 @@ module.exports = function (app) {
 				});
 			});
 			req.on('error', (e) => {
-				logger.info(`problem with request: ${e.message}`);
+				console.info(`problem with request: ${e.message}`);
 			});
 			req.end();
 		});
@@ -150,7 +150,7 @@ module.exports = function (app) {
 				});
 			});
 			req2.on('error', (e) => {
-				logger.info(`problem with request: ${e.message}`);
+				console.info(`problem with request: ${e.message}`);
 			});
 			req2.write(JSON.stringify({ email: 'adm_UserManager@gmail.com', password: '123456' }));
 			req2.end();
