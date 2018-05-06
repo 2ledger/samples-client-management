@@ -50,9 +50,9 @@ appT.run(function ($rootScope) {
 appT.config(function ($routeProvider) {
 	$routeProvider
 		.when("/login", {
-			templateUrl: "/models/login/login.html",
+			templateUrl: "models/login/login.html",
 		})
 		.when("/manager", {
-			templateUrl: "/models/manager/manager.html",
+			templateUrl: "models/manager/manager.html",
 		})
 });
