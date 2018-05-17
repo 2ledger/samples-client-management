@@ -180,7 +180,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
         me.clients = [];
         var rest = {
             method: 'DELETE',
-            url: "/client/deleteClient",
+            url: "client/deleteClient",
             headers: { 'Content-Type': 'application/json' },
             data: {
                 id: me.clientRemove.key,
@@ -253,7 +253,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
         me.clients = [];
         var rest = {
             method: 'POST',
-            url: "/client/saveClient",
+            url: "client/saveClient",
             headers: { 'Content-Type': 'application/json' },
             data: {
                 id: me.emailClient,
@@ -292,7 +292,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
 
         var rest = {
             method: 'GET',
-            url: "/client/searchClient/" + me.fieldQuery,
+            url: "client/searchClient/" + me.fieldQuery,
             headers: { 'Content-Type': 'application/json' },
         }
 
@@ -313,7 +313,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
 
         var rest = {
             method: 'GET',
-            url: "/client/getAllClients",
+            url: "client/getAllClients",
             headers: { 'Content-Type': 'application/json' },
         }
 
@@ -341,7 +341,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
     me.getToken = function () {
         var rest = {
             method: 'GET',
-            url: "/client/getToken/",
+            url: "client/getToken/",
             headers: { 'Content-Type': 'application/json' },
         }
 

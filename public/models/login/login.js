@@ -69,7 +69,7 @@ function login($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $loc
 
         var rest = {
             method: 'POST',
-            url: "/login/loginClient",
+            url: "login/loginClient",
             headers: { 'Content-Type': 'application/json' },
             data: {
                 emailClient: me.emailClient,
@@ -127,7 +127,7 @@ function login($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $loc
     me.getToken = function () {
         var rest = {
             method: 'GET',
-            url: "/client/getToken/",
+            url: "client/getToken/",
             headers: { 'Content-Type': 'application/json' },
         }
 
