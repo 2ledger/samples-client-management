@@ -19,12 +19,14 @@ app.use(methodOverride());
 app.use(bodyParser.json({limit:1024102420, type:'application/json'}));
 app.use(bodyParser.text());
 
+console.log('here1');
 global.env = cfg.env;
 global.cfg = cfg;
 
-console.log(cfg);
-console.log(global.cfg);
-console.log(global.env);
+console.log('here1:'+cfg);
+console.log('here2:'+global.cfg);
+console.log('here3:'+global.env);
+console.log('here4:'+cfg.API_2LEDGER_TOKEN);
 
 app.use(function(req, res, next) {
     console.info(req.url);
