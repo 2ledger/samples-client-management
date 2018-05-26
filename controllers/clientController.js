@@ -20,7 +20,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion': global.cfg.API_2LEDGER_TOKEN
+					'X-JWT-Assertion': global.env.API_2LEDGER_TOKEN
 				}
 			};
 			console.log(options);
