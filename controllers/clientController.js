@@ -11,6 +11,7 @@ module.exports = function (app) {
 	// Método para chamadas GET
 	///////////////////////////////////////////////////////////////////////
 	function chamadaGET(path) {
+		console.log(path);
 		return new Promise((resolve, reject) => {
 			var auth = global.cfg.API_2LEDGER_TOKEN;
 
@@ -37,7 +38,7 @@ module.exports = function (app) {
 				});
 			});
 			req.on('error', (e) => {
-				console.info(`problem with request: ${e.message}`);
+				console.error(`problem with request: ${e.message}`);
 			});
 			req.end();
 		});
