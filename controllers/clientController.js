@@ -24,7 +24,7 @@ module.exports = function (app) {
 					'X-JWT-Assertion': auth
 				}
 			};
-
+			console.log(options);
 			const req = https.request(options, (response) => {
 				response.setEncoding('utf8');
 				var body = '';
