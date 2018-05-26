@@ -38,6 +38,7 @@ module.exports = function (app) {
 				});
 			});
 			req.on('error', (e) => {
+				console.log(`problem with request: ${e.message}`);
 				console.error(`problem with request: ${e.message}`);
 			});
 			req.end();
