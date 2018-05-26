@@ -15,10 +15,10 @@ module.exports = function (app) {
 		return new Promise((resolve, reject) => {
 			var auth = global.cfg.API_2LEDGER_TOKEN;
 			
-console.log(global.process.env. API_2LEDGER_TOKEN);
-console.log(global.env.API_2LEDGER_TOKEN);
-console.log(global.cfg.API_2LEDGER_TOKEN);
-console.log(global.cfg);
+console.log('(1):' + global.process.env.API_2LEDGER_TOKEN);
+console.log('(2):' + global.env.API_2LEDGER_TOKEN);
+console.log('(3):' + global.cfg.API_2LEDGER_TOKEN);
+console.log('(4):' + global.cfg);
 			
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
