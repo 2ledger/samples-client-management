@@ -4,6 +4,7 @@ var development = {
 	host : global.process.env.HOST || 'localhost',
 	API_2LEDGER : global.process.env.API_2LEDGER || 'sandbox.2ledger.com',
 	API_2LEDGER_TOKEN : global.process.env.API_2LEDGER_TOKEN || '.',
+	token : global.process.env.API_2LEDGER_TOKEN || '.',
 	API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID : global.process.env.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID || '5ae26d0edb26860036e5bda2'
 };
 
@@ -13,6 +14,7 @@ var production = {
 	host : global.process.env.HOST || 'localhost',
 	API_2LEDGER : global.process.env.API_2LEDGER,
 	API_2LEDGER_TOKEN : global.process.env.API_2LEDGER_TOKEN,
+	token : global.process.env.API_2LEDGER_TOKEN || '.',
 	API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID : global.process.env.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID
 };
 
