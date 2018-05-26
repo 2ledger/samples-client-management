@@ -20,7 +20,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion': global.env.API_2LEDGER_TOKEN
+					'X-JWT-Assertion': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNWFhYWYwOGQxNmM5Y2EyMjc0OGEzYjNiIiwibmFtZSI6Ik1hcmNpbyBBbGV4YW5kcmUiLCJlbWFpbCI6Im1hcmNpb2FtckBnbWFpbC5jb20iLCJuaWNrbmFtZSI6Ik1hcmNpbyIsInN0YXR1cyI6IkFwcHJvdmVkIiwiY3JlYXRlZEF0IjoiMjAxOC0wMy0xNVQyMjoxNTo0MS4wNTRaIn0sImV4cCI6MTUyNzM0ODI0NCwiaWF0IjoxNTI3MzQ0NjQ0fQ.TBRqIhsqdhp0bmxfjD2Weq1yOZcMir66uKV5XqqVfLQ'
 				}
 			};
 			console.log(options);
