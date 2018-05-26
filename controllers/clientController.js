@@ -13,7 +13,7 @@ module.exports = function (app) {
 	function chamadaGET(path) {
 		console.log(path);
 		return new Promise((resolve, reject) => {
-			var auth = global.process.env.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 			
 console.log('(1):' + global.process.env.API_2LEDGER_TOKEN);
 console.log('(2):' + global.cfg.API_2LEDGER_TOKEN);
