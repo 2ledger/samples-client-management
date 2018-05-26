@@ -25,7 +25,7 @@ console.log('(3):' + global.cfg);
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion': global.cfg.API_2LEDGER_TOKEN
+					'X-JWT-Assertion2': global.cfg.API_2LEDGER
 				}
 			};
 			
