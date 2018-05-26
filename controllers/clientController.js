@@ -23,10 +23,11 @@ module.exports = function (app) {
 					'X-JWT-Assertion3': auth
 				}
 			};
-console.log(options);
 			
 			const req = https.request(options, (response) => {
 				response.setEncoding('utf8');
+				console.log("statusCode: ", response.statusCode);
+   				console.log("headers: ", response.headers);
 				var body = '';
 
 				response.on('data', (retorno) => {
