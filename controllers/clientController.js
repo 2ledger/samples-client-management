@@ -14,6 +14,12 @@ module.exports = function (app) {
 		console.log(path);
 		return new Promise((resolve, reject) => {
 			var auth = global.cfg.API_2LEDGER_TOKEN;
+			
+console.log(global.process.env. API_2LEDGER_TOKEN);
+console.log(global.env.API_2LEDGER_TOKEN);
+console.log(global.cfg.API_2LEDGER_TOKEN);
+console.log(global.cfg);
+			
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
@@ -23,23 +29,29 @@ module.exports = function (app) {
 					'X-JWT-Assertion': auth
 				}
 			};
-			console.log(options);
+			
+console.log(options);
+			
 			const req = https.request(options, (response) => {
 				response.setEncoding('utf8');
 				var body = '';
 
 				response.on('data', (retorno) => {
+console.log('data');
 					body += retorno;
 				});
 
 				response.on('end', function () {
+console.log('end');
 					resolve(body);
 				});
 				response.on('error', (e) => {
+console.log('erro1');
 					console.error(`problem with request: ${e.message}`);
 				});
 			});
 			req.on('error', (e) => {
+console.log('erro2');
 				console.error(`problem with request: ${e.message}`);
 			});
 			req.end();
