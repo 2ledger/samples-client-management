@@ -36,9 +36,11 @@ module.exports = function (app) {
 				response.on('end', function () {
 					resolve(body);
 				});
+				response.on('error', (e) => {
+					console.error(`problem with request: ${e.message}`);
+				});
 			});
 			req.on('error', (e) => {
-				console.log(`problem with request: ${e.message}`);
 				console.error(`problem with request: ${e.message}`);
 			});
 			req.end();
@@ -74,6 +76,7 @@ module.exports = function (app) {
 				response.on('end', function () {
 					resolve(body);
 				});
+				
 			});
 			req.on('error', (e) => {
 				console.info(`problem with request: ${e.message}`);
