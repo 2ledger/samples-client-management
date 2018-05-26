@@ -13,10 +13,10 @@ module.exports = function (app) {
 	function chamadaGET(path) {
 		console.log(path);
 		return new Promise((resolve, reject) => {
-			var auth = global.cfg.API_2LEDGER_TOKEN;
+			var auth = global.cfg.token;
 			
 console.log('(1):' + global.process.env.API_2LEDGER_TOKEN);
-console.log('(2):' + global.cfg.API_2LEDGER_TOKEN);
+console.log('(2):' + global.cfg.token);
 console.log('(3):' + global.cfg);
 			
 			const options = {
@@ -25,7 +25,7 @@ console.log('(3):' + global.cfg);
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion2': global.cfg.API_2LEDGER
+					'X-JWT-Assertion2': global.cfg.token
 				}
 			};
 			
@@ -36,7 +36,7 @@ console.log(options);
 				var body = '';
 
 				response.on('data', (retorno) => {
-console.log('data');
+console.log('data:' + retorno);
 					body += retorno;
 				});
 
