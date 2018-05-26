@@ -25,8 +25,8 @@ global.cfg = cfg;
 
 console.log('here1:'+cfg);
 console.log('here2:'+global.cfg);
-console.log('here3:'+global.env);
-console.log('here4:'+cfg.API_2LEDGER_TOKEN);
+console.log('here3:'+cfg.API_2LEDGER_TOKEN);
+console.log('here4:'+global.cfg.API_2LEDGER_TOKEN);
 
 app.use(function(req, res, next) {
     console.info(req.url);
