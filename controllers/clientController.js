@@ -4,7 +4,6 @@ var Promise = require('promise');
 var https = require('https');
 var querystring = require('querystring');
 
-
 module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	// ChamadaGET
@@ -20,32 +19,27 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion3': auth
+					'X-JWT-Assertion': auth
 				}
 			};
 			
 			const req = https.request(options, (response) => {
 				response.setEncoding('utf8');
 				console.log("statusCode: ", response.statusCode);
-   				console.log("headers: ", response.headers);
 				var body = '';
 
 				response.on('data', (retorno) => {
-console.log('data:' + retorno);
 					body += retorno;
 				});
 
 				response.on('end', function () {
-console.log('end');
 					resolve(body);
 				});
 				response.on('error', (e) => {
-console.log('erro1');
 					console.error(`problem with request: ${e.message}`);
 				});
 			});
 			req.on('error', (e) => {
-console.log('erro2');
 				console.error(`problem with request: ${e.message}`);
 			});
 			req.end();
