@@ -14,21 +14,15 @@ module.exports = function (app) {
 		console.log(path);
 		return new Promise((resolve, reject) => {
 			var auth = global.cfg.token;
-			
-console.log('(1):' + global.process.env.API_2LEDGER_TOKEN);
-console.log('(2):' + global.cfg.token);
-console.log('(3):' + global.cfg);
-			
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion2': global.cfg.token
+					'X-JWT-Assertion3': auth
 				}
 			};
-			
 console.log(options);
 			
 			const req = https.request(options, (response) => {
