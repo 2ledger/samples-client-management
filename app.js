@@ -22,6 +22,10 @@ app.use(bodyParser.text());
 global.env = cfg.env;
 global.cfg = cfg;
 
+console.log(cfg);
+console.log(global.cfg);
+console.log(global.env);
+
 app.use(function(req, res, next) {
     console.info(req.url);
     next();
