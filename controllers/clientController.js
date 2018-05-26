@@ -12,14 +12,14 @@ module.exports = function (app) {
 	function chamadaGET(path) {
 		console.log(path);
 		return new Promise((resolve, reject) => {
-			var auth = global.cfg.token;
+			var auth = 'Bearer ' + global.cfg.token;
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion': auth
+					'Authorization': auth
 				}
 			};
 			
