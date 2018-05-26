@@ -51,7 +51,7 @@ app.listen(cfg.port, cfg.host, function () {
     console.info("########################################################################");
     console.info('Enviroment: ', cfg.env);
     console.info('URL: ', cfg.host + ":" + cfg.port);
-    console.info('API_2LEDGER_TOKEN: ', cfg.API_2LEDGER_TOKEN);
+    console.info('API_2LEDGER_TOKEN: ', global.cfg.API_2LEDGER_TOKEN);
     console.info("------------------------------------------------------------------------");
 });
 
