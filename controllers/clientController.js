@@ -19,7 +19,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': auth
+					'Authorization': 'Bearer ' + auth
 				}
 			};
 			
@@ -60,7 +60,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': auth
+					'Authorization': 'Bearer ' + auth
 				}
 			};
 
@@ -98,7 +98,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': auth
+					'Authorization': 'Bearer ' + auth
 				}
 			};
 
