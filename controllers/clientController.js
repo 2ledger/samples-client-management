@@ -12,7 +12,7 @@ module.exports = function (app) {
 	function chamadaGET(path) {
 		console.log(path);
 		return new Promise((resolve, reject) => {
-			var auth = 'Bearer ' + global.cfg.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'GET',
@@ -52,7 +52,7 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaDELETE(path) {
 		return new Promise((resolve, reject) => {
-			var auth = 'Bearer ' + global.cfg.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 			
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
@@ -90,7 +90,7 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////
 	function chamadaPOST(path, data) {
 		return new Promise((resolve, reject) => {
-			var auth = 'Bearer ' + global.cfg.API_2LEDGER_TOKEN;
+			var auth = global.cfg.API_2LEDGER_TOKEN;
 
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
