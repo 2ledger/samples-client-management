@@ -20,7 +20,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion': auth
+					'Authorization': 'Bearer ' + auth
 				}
 			};
 
@@ -57,7 +57,7 @@ module.exports = function (app) {
 				path: '/v1' + path,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-JWT-Assertion': auth
+					'Authorization': 'Bearer ' + auth
 				}
 			};
 
@@ -92,9 +92,8 @@ module.exports = function (app) {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
 				path: '/v1' + path,
-				headers: {
-					'Content-Type': 'application/json',
-					'X-JWT-Assertion': auth
+				headers: { 'Content-Type': 'application/json',
+					'Authorization': 'Bearer ' + auth
 				}
 			};
 
@@ -126,12 +125,14 @@ module.exports = function (app) {
 		///////////////////////////////////////////////////////////////////////
 		getToken: function (req, res) {
 
+			const basic = Buffer.from('adm_UserManager@gmail.com:123456');
 			const options = {
 				hostname: global.cfg.API_2LEDGER,
 				method: 'POST',
 				path: '/v1/login',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'Authorization': 'Basic ' + basic
 				}
 			};
 
@@ -152,7 +153,6 @@ module.exports = function (app) {
 			req2.on('error', (e) => {
 				logger.info(`problem with request: ${e.message}`);
 			});
-			req2.write(JSON.stringify({ email: 'adm_UserManager@gmail.com', password: '123456' }));
 			req2.end();
 		},
 
