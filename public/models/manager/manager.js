@@ -14,7 +14,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
     me.textConfirmation = 'Are you sure?';
     me.editMode = false;
     me.loadingText = '';
-    me.responseText = 'Client successiful saved';
+    me.responseText = 'Client registered successfully.';
     me.fieldQuery = '';
 
     $('.alert').css({'margin-top':'-300px'});
@@ -191,7 +191,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
         $http(rest).then(function (e) {
             me.getAllClients();
             me.clientRemove = null;
-            me.showAlert('Client successiful removed');
+            me.showAlert('Client registered successfully.');
         }, function (err) {
 
             console.log(err);
