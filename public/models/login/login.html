@@ -6,6 +6,13 @@
         </div>
     </div>
 
+    <div layout="row" class="error">
+        <div layout="row" style="    width: 50px;    padding-bottom: 31px;border-radius: 50px;position: relative;color: #FFFFFF;    padding-top: 22px;padding-left: 20px;">
+            <i class="fa fa-times" aria-hidden="true" style="font-size: 49px;width: 50px;"></i>
+            <div flex style="    min-width: 184px;    font-weight: 700;    font-size: 13px;    margin-top: 18px;    margin-left: 10px; margin-right: 10px;">{{cx.errorMessage}}</div>
+        </div>
+    </div>
+    
     <div layout="column" class="detailsClient boxClient" style="text-align: center;">
 
         <div ng-show="cx.clientValid.photoClient != ''" style="margin-left: 88px;    margin-bottom: 16px;border-radius: 136px;height: 136px;width: 136px;max-width: 136px;max-height: 136px;opacity: 0.8;    cursor: pointer;    text-shadow: none;    color: #585858;    padding-top: 7px;    margin-right: 45px;margin-top: 30px"

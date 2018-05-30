@@ -53,6 +53,15 @@ body{
     font-weight: 800;   
 }
 
+.error{
+    position: absolute;   
+    background-color: #b94343;
+    left: calc(50% - 44px);
+    width: 281px;
+    z-index: 9999999999;
+    border-radius: 5px;
+    box-shadow: 2px 2px 26px #000000    
+}
 
 .gridButtom{
     border: 0px;

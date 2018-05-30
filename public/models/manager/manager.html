@@ -7,6 +7,13 @@
         </div>
     </div>
 
+    <div layout="row" class="error">
+        <div layout="row" style="    width: 50px;    padding-bottom: 31px;border-radius: 50px;position: relative;color: #FFFFFF;    padding-top: 22px;padding-left: 20px;">
+            <i class="fa fa-times" aria-hidden="true" style="font-size: 49px;width: 50px;"></i>
+            <div flex style="    min-width: 184px;    font-weight: 700;    font-size: 13px;    margin-top: 18px;    margin-left: 10px; margin-right: 10px;">{{cx.errorMessage}}</div>
+        </div>
+    </div>
+    
     <div flex layout="row" style="    text-align: left;margin-left: 10px;font-size: 22px;font-weight: 700;color: #ffffff;margin-bottom: 10px;margin-bottom: 10px;border-bottom: 1px solid #ffffff1a;padding-bottom: 13px;">
         <i class="fa fa-users" aria-hidden="true" style="font-size: 37px;"></i>
         <div style="margin-left: 16px;margin-top: 3px;" ng-show="cx.clients.length == 0">Clients</div>
@@ -68,7 +75,7 @@
                     <div ng-repeat="itm in cx.clients" style="margin-bottom: 12px;border-bottom: 1px solid #ffffffa1;padding-bottom: 10px;" layout="column">
                         <div flex layout="row">
                             <i ng-show="itm.value.photoClient == ''" class="fa fa-user-circle" aria-hidden="true" style="color: #FFFFFF;font-size: 31px;margin-left: 7px;"></i>
-                            <img ng-show="itm.value.photoClient != ''" class="bordaFotoUsuario" style="border: 2px solid #FFFFFF;height: 31px;border-radius: 31px;width: 31px;max-width: 31px;max-height: 31px;margin-left: 7px;"
+                            <img ng-show="itm.value.photoClient != ''" class="bordaFotoUsuario" style="margin-left: 3px;margin-top: 5px;border: 2px solid #FFFFFF;height: 31px;border-radius: 31px;width: 31px;max-width: 31px;max-height: 31px;margin-left: 7px;"
                                 ng-src="{{itm.value.photoClient}}" />
 
                             <div flex style="    padding-top: 6px;margin-right: -40px;text-align: left;margin-left: 13px;font-size: 13px;font-weight: 600;color: #ffffff;">

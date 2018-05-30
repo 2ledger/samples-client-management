@@ -193,11 +193,31 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
             me.clientRemove = null;
             me.showAlert('Client registered successfully.');
         }, function (err) {
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;
 
             console.log(err);
         });
     }
 
+    
+    me.showError = function (text) {
+        me.errorMessage = text;
+
+        $('.error').animate({ 'margin-top': '3px' }, 100);
+
+        me.timerErro = setTimeout(function () {
+            me.hideError();
+        }, 6000)
+
+    }
+
+    me.hideError = function (text) {
+        clearTimeout(me.timerErro);
+
+        $('.error').animate({ 'margin-top': '-300px' }, 100);
+    }
+    
     me.deleteClient = function (item) {
         me.showConfirmation = true;
         me.clientRemove = item;
@@ -275,7 +295,8 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
             me.showAlert('Client successiful saved');
 
         }, function (err) {
-
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;
             console.log(err);
         });
     }
@@ -301,7 +322,8 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
 
             me.showWaiting = false;
         }, function (err) {
-
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;
             console.log(err);
         });
     }
@@ -322,7 +344,8 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
 
             me.showWaiting = false;
         }, function (err) {
-
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;
             console.log(err);
         });
     }
@@ -350,6 +373,8 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
             me.getAllClients();
 
         }, function (err) {
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;            
             console.log(err);
         });
     }

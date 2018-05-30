@@ -86,7 +86,8 @@ function login($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $loc
                 me.clientValidated(e.data)
             
         }, function (err) {
-
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;
             console.log(err);
         });
     }    
@@ -124,6 +125,23 @@ function login($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $loc
         me.showClient();
     }
 
+    me.showError = function (text) {
+        me.errorMessage = text;
+
+        $('.error').animate({ 'margin-top': '3px' }, 100);
+
+        me.timerErro = setTimeout(function () {
+            me.hideError();
+        }, 6000)
+
+    }
+
+    me.hideError = function (text) {
+        clearTimeout(me.timerErro);
+
+        $('.error').animate({ 'margin-top': '-300px' }, 100);
+    }
+    
     me.getToken = function () {
         var rest = {
             method: 'GET',
@@ -134,6 +152,8 @@ function login($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $loc
         $http(rest).then(function (e) {
 
         }, function (err) {
+            me.showError(err.data.error_message);      
+            me.showWaiting = false;            
             console.log(err);
         });
     }
