@@ -11,6 +11,8 @@ function login($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $loc
     me.showWaiting = false;
 
     $('.alert').css({'margin-top':'-300px'});
+    $('.error').css({'margin-top':'-300px'});
+    
     $('.boxClient').css({'margin-top':'-800px'});
 
     $scope.$on('hideScreen', function (){

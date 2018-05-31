@@ -18,6 +18,7 @@ function manager($scope, $http, $rootScope, $timeout, $filter, ngTableParams, $l
     me.fieldQuery = '';
 
     $('.alert').css({'margin-top':'-300px'});
+    $('.error').css({'margin-top':'-300px'});
     $('.invalidMail').css({'opacity': '0'});
 
     $scope.$on('hideScreen', function (){
