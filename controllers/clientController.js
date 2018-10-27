@@ -167,7 +167,7 @@ module.exports = function (app) {
 		// Metod
 		///////////////////////////////////////////////////////////////////////
 		getAllClients: function (req, res) {
-			chamadaGET('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
+			chamadaGET('/networks/' + global.cfg.API_2LEDGER_SAMPLE_ID_NETWORK + '/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
 				var list = JSON.parse(d).response;
 				var obj = {};
 				var result = [];
@@ -202,7 +202,7 @@ module.exports = function (app) {
 			value.status = 'active';
 
 			var obj = {key:req.body.id, value:value};
-			chamadaPOST('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
+			chamadaPOST('/networks/' + global.cfg.API_2LEDGER_SAMPLE_ID_NETWORK + '/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
 				res.send(JSON.parse(d).response);
 			})
 		},
@@ -216,7 +216,7 @@ module.exports = function (app) {
 			value.status = 'inactive';
 
 			var obj = {key:req.body.id, value:value};
-			chamadaPOST('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
+			chamadaPOST('/networks/' + global.cfg.API_2LEDGER_SAMPLE_ID_NETWORK + '/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records', obj).then(d => {
 				res.send(JSON.parse(d).response);
 			})
 		},		
@@ -228,7 +228,7 @@ module.exports = function (app) {
 		searchClient: function (req, res) {
 			var param = req.params.client;
 
-			chamadaGET('/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
+			chamadaGET('/networks/' + global.cfg.API_2LEDGER_SAMPLE_ID_NETWORK + '/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records').then(d => {
 				var list = JSON.parse(d).response;
 				var obj = {};
 				var result = [];

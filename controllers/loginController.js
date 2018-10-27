@@ -165,15 +165,15 @@ module.exports = function (app) {
 			var emailClient = req.body.emailClient;
 			var passwordClient = req.body.passwordClient;
 
-			chamadaGET('/records/' + encodeURIComponent(emailClient)).then(d => {
+			chamadaGET('/networks/' + global.cfg.API_2LEDGER_SAMPLE_ID_NETWORK + '/entities/' + global.cfg.API_2LEDGER_SAMPLE_CLIENT_ENTITY_ID + '/records/' + encodeURIComponent(emailClient)).then(d => {
 				var client = JSON.parse(d);
 
 				if (client.success == 'false')
 					res.send({ type: 'error', message: 'Client doesn´t exist' });
-				if (client.response.record.value.status == 'inactive')
+				if (client.response.value.status == 'inactive')
 					res.send({ type: 'error', message: 'Client doesn´t exist' });
-				else if (passwordClient == client.response.record.value.passwordClient)
-					res.send({ type: 'success', data: client.response.record.value });
+				else if (passwordClient == client.response.value.passwordClient)
+					res.send({ type: 'success', data: client.response.value });
 				else
 					res.send({ type: 'error', message: 'Wrong password' });
 			})
