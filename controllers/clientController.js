@@ -22,7 +22,7 @@ module.exports = function (app) {
 					'Authorization': 'Bearer ' + auth
 				}
 			};
-			
+
 			const req = https.request(options, (response) => {
 				response.setEncoding('utf8');
 				console.log("statusCode: ", response.statusCode);
